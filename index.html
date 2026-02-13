@@ -2,108 +2,224 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Para Julia ❤️</title>
+<title>Julia & Leo ❤️</title>
 
 <style>
 body {
     margin: 0;
-    padding: 0;
-    background: linear-gradient(to bottom, #8b0000, #ff0000);
-    font-family: Arial, sans-serif;
-    text-align: center;
-    color: white;
+    background: #7b0000;
+    font-family: 'Georgia', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     overflow: hidden;
 }
 
-.container {
-    padding-top: 80px;
+/* LIVRO */
+.book {
+    width: 350px;
+    height: 500px;
     position: relative;
-    z-index: 2;
+    perspective: 2000px;
 }
 
-h1 {
-    font-size: 50px;
-    animation: pulsar 2s infinite;
+/* CAPA */
+.cover {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, #b30000, #800000);
+    color: white;
+    position: absolute;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transform-origin: left;
+    transition: transform 1.5s;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.7);
 }
 
-@keyframes pulsar {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+.cover h1 {
+    font-size: 32px;
+    margin: 0;
 }
 
-p {
-    font-size: 20px;
-    max-width: 600px;
-    margin: auto;
+.cover p {
+    font-size: 18px;
+    margin-top: 10px;
+    opacity: 0.9;
 }
 
-#contador {
-    font-size: 22px;
-    margin-top: 20px;
-    font-weight: bold;
+.cover.open {
+    transform: rotateY(-160deg);
+}
+
+/* PÁGINAS */
+.page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #fff5f5;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transform-origin: left;
+    transition: transform 1s;
+    padding: 20px;
+    box-sizing: border-box;
+    backface-visibility: hidden;
+}
+
+.page h2 {
+    color: darkred;
+}
+
+.page p {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.page.flipped {
+    transform: rotateY(-180deg);
 }
 
 button {
-    padding: 15px 30px;
-    font-size: 18px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    background: white;
-    color: red;
-    margin-top: 30px;
-}
-
-button:hover {
-    background: #ffe5e5;
-}
-
-/* Corações */
-.coracao {
     position: absolute;
-    color: red;
-    font-size: 20px;
-    animation: cair linear infinite;
+    bottom: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border: none;
+    background: darkred;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-@keyframes cair {
-    0% {
-        transform: translateY(-10%);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(110vh);
-        opacity: 0;
-    }
+#contador {
+    margin-top: 15px;
+    font-weight: bold;
+    color: darkred;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-    <h1>Julia ❤️</h1>
+<div class="book">
 
-    <p>
-        Desde que você entrou na minha vida,
-        tudo ficou mais bonito.
-        Você é meu amor, meu sorriso diário,
-        e o melhor presente que Deus me deu.
-    </p>
+<!-- CAPA -->
+<div class="cover" onclick="abrirLivro()">
+    <h1>Julia & Leo ❤️</h1>
+    <p>Nossa História</p>
+    <p style="font-size:14px;margin-top:20px;">Clique para abrir</p>
+</div>
 
-    <div id="contador"></div>
+<!-- PÁGINAS -->
+<div class="page">
+<h2>Capítulo 1</h2>
+<p>
+Tudo começou por causa de um jogo no Roblox...
+Um amigo me obrigou a entrar.
+Eu estava triste.
+Tinha acabado de sair de um relacionamento.
+Mas então… você apareceu.
+</p>
+<button onclick="virarPagina(this)">Próxima</button>
+</div>
 
-    <button onclick="document.getElementById('musica').play()">
-        Tocar nossa música 🎵
-    </button>
+<div class="page">
+<h2>Capítulo 2</h2>
+<p>
+Nós dois com vergonha.
+Tentando puxar assunto.
+Mas sempre esperando a mensagem um do outro.
+Sem perceber…
+Você virou minha parte favorita do dia.
+</p>
+<button onclick="virarPagina(this)">Próxima</button>
+</div>
 
-    <audio id="musica" src="musica.mp3"></audio>
+<div class="page">
+<h2>Capítulo 3</h2>
+<p>
+O dia que escutamos música juntos pela primeira vez...
+Foi ali.
+Eu senti algo diferente.
+Eu sabia.
+Eu te amava.
+</p>
+<button onclick="virarPagina(this)">Próxima</button>
+</div>
+
+<div class="page">
+<h2>Capítulo 4</h2>
+<p>
+Pernambuco e Rio de Janeiro.
+Distância no mapa.
+Mas nunca no coração.
+Eu amo sua personalidade.
+Eu amo tudo em você.
+</p>
+<button onclick="virarPagina(this)">Próxima</button>
+</div>
+
+<div class="page">
+<h2>Capítulo 5</h2>
+<p>
+Nossa família:
+Batata.
+Sanji.
+Tigrinho.
+Pode parecer brincadeira...
+Mas pra mim é sonho.
+É futuro.
+É você comigo.
+</p>
+<button onclick="virarPagina(this)">Próxima</button>
+</div>
+
+<div class="page">
+<h2>Para Sempre ❤️</h2>
+<p>
+Julia...
+Você me curou.
+Você trouxe luz quando eu estava no escuro.
+Se não fosse aquele jogo,
+eu nunca teria encontrado
+o amor da minha vida.
+Eu te amo.
+</p>
+
+<div id="contador"></div>
+
+<button onclick="tocarMusica()">Tocar nossa música 🎵</button>
+
+<audio id="musica">
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
 </div>
 
 <script>
 
-/* DATA QUE VOCÊS COMEÇARAM */
+function abrirLivro() {
+    document.querySelector(".cover").classList.add("open");
+}
+
+function virarPagina(botao) {
+    const pagina = botao.parentElement;
+    pagina.classList.add("flipped");
+}
+
+function tocarMusica() {
+    document.getElementById("musica").play();
+}
+
+/* CONTADOR */
 const dataInicio = new Date("2025-10-22");
 
 function atualizarContador() {
@@ -116,33 +232,15 @@ function atualizarContador() {
     const segundos = Math.floor((diferenca / 1000) % 60);
 
     document.getElementById("contador").innerHTML =
-        `Estamos juntos há 💖<br>
-        ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤️`;
+    `Estamos juntos há ❤️<br>
+    ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
 }
 
 setInterval(atualizarContador, 1000);
 atualizarContador();
 
-/* Criar corações caindo */
-function criarCoracao() {
-    const coracao = document.createElement("div");
-    coracao.classList.add("coracao");
-    coracao.innerHTML = "❤️";
-
-    coracao.style.left = Math.random() * 100 + "vw";
-    coracao.style.animationDuration = (Math.random() * 3 + 2) + "s";
-    coracao.style.fontSize = (Math.random() * 20 + 15) + "px";
-
-    document.body.appendChild(coracao);
-
-    setTimeout(() => {
-        coracao.remove();
-    }, 5000);
-}
-
-setInterval(criarCoracao, 300);
-
 </script>
 
 </body>
 </html>
+
