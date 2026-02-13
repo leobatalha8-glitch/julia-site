@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Para Julia ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #8b0000, #ff0000);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.container {
+    padding-top: 80px;
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    font-size: 50px;
+    animation: pulsar 2s infinite;
+}
+
+@keyframes pulsar {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+p {
+    font-size: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+#contador {
+    font-size: 22px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: white;
+    color: red;
+    margin-top: 30px;
+}
+
+button:hover {
+    background: #ffe5e5;
+}
+
+/* Corações */
+.coracao {
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    animation: cair linear infinite;
+}
+
+@keyframes cair {
+    0% {
+        transform: translateY(-10%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Julia ❤️</h1>
+
+    <p>
+        Desde que você entrou na minha vida,
+        tudo ficou mais bonito.
+        Você é meu amor, meu sorriso diário,
+        e o melhor presente que Deus me deu.
+    </p>
+
+    <div id="contador"></div>
+
+    <button onclick="document.getElementById('musica').play()">
+        Tocar nossa música 🎵
+    </button>
+
+    <audio id="musica" src="musica.mp3"></audio>
+</div>
+
+<script>
+
+/* DATA QUE VOCÊS COMEÇARAM */
+const dataInicio = new Date("2025-10-22");
+
+function atualizarContador() {
+    const agora = new Date();
+    const diferenca = agora - dataInicio;
+
+    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+    const segundos = Math.floor((diferenca / 1000) % 60);
+
+    document.getElementById("contador").innerHTML =
+        `Estamos juntos há 💖<br>
+        ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤️`;
+}
+
+setInterval(atualizarContador, 1000);
+atualizarContador();
+
+/* Criar corações caindo */
+function criarCoracao() {
+    const coracao = document.createElement("div");
+    coracao.classList.add("coracao");
+    coracao.innerHTML = "❤️";
+
+    coracao.style.left = Math.random() * 100 + "vw";
+    coracao.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    coracao.style.fontSize = (Math.random() * 20 + 15) + "px";
+
+    document.body.appendChild(coracao);
+
+    setTimeout(() => {
+        coracao.remove();
+    }, 5000);
+}
+
+setInterval(criarCoracao, 300);
+
+</script>
+
+</body>
+</html>
